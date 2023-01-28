@@ -6,7 +6,7 @@
 
 @section('content')
 <form action="/posts" method="POST">
-    @csrf
+  @csrf
   <div class="form-group mb-3">
     <label for="post-title">Title</label>
     <input type="text" class="form-control" id="post-title" placeholder="Post Title">

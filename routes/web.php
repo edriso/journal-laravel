@@ -30,8 +30,11 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 // View post
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
-// Update post
+// Edit post
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+
+// Update post
+// Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
 // Delete post
 // Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
