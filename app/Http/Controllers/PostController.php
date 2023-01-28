@@ -42,7 +42,8 @@ class PostController extends Controller
     }
 
     public function show($postId) {
-        $selectedPost = [
+        $allPosts = [
+            [
                 'id' => 1,
                 'title' => 'Cupcake Ipsum!',
                 'content' => 'Cupcake wafer jelly-o chocolate cake pie chocolate lollipop. Pastry bonbon bonbon brownie apple pie dragée. Croissant I love pastry apple pie macaroon sesame snaps cake. Jujubes I love pudding biscuit marzipan tootsie roll.
@@ -52,7 +53,23 @@ class PostController extends Controller
                             Carrot cake gummi bears pastry cookie tootsie roll bear claw bonbon. Danish jujubes sugar plum donut I love I love jelly bonbon. Soufflé sugar plum toffee marshmallow ice cream. Macaroon cake cheesecake marzipan cheesecake soufflé chocolate bar tootsie roll.',
                 'posted_by' => 'John Doe',
                 'created_at' => '2022-01-25 05:00:00'
+            ],
+             [
+                'id' => 2,
+                'title' => 'Hello Laravel!',
+                'content' => 'Lemon drops chocolate jelly danish marzipan biscuit fruitcake tootsie roll. Oat cake gingerbread fruitcake tiramisu cake. Gingerbread I love sesame snaps sesame snaps chocolate cake chupa chups caramels chupa chups. Gummi bears soufflé shortbread macaroon cookie icing tiramisu.',
+                'posted_by' => 'Jane Doe',
+                'created_at' => '2022-01-28 10:05:00'
+            ]
         ];
+
+        $selectedPost = '';
+
+        foreach($allPosts as $post) {
+            if($post['id'] == $postId) {
+                $selectedPost = $post;
+            }
+        }
 
         return view('posts.show', [
             'post' => $selectedPost
@@ -60,7 +77,8 @@ class PostController extends Controller
     }
 
     public function edit($postId) {
-        $selectedPost = [
+        $allPosts = [
+            [
                 'id' => 1,
                 'title' => 'Cupcake Ipsum!',
                 'content' => 'Cupcake wafer jelly-o chocolate cake pie chocolate lollipop. Pastry bonbon bonbon brownie apple pie dragée. Croissant I love pastry apple pie macaroon sesame snaps cake. Jujubes I love pudding biscuit marzipan tootsie roll.
@@ -70,7 +88,23 @@ class PostController extends Controller
                             Carrot cake gummi bears pastry cookie tootsie roll bear claw bonbon. Danish jujubes sugar plum donut I love I love jelly bonbon. Soufflé sugar plum toffee marshmallow ice cream. Macaroon cake cheesecake marzipan cheesecake soufflé chocolate bar tootsie roll.',
                 'posted_by' => 'John Doe',
                 'created_at' => '2022-01-25 05:00:00'
+            ],
+             [
+                'id' => 2,
+                'title' => 'Hello Laravel!',
+                'content' => 'Lemon drops chocolate jelly danish marzipan biscuit fruitcake tootsie roll. Oat cake gingerbread fruitcake tiramisu cake. Gingerbread I love sesame snaps sesame snaps chocolate cake chupa chups caramels chupa chups. Gummi bears soufflé shortbread macaroon cookie icing tiramisu.',
+                'posted_by' => 'Jane Doe',
+                'created_at' => '2022-01-28 10:05:00'
+            ]
         ];
+
+        $selectedPost = '';
+
+        foreach($allPosts as $post) {
+            if($post['id'] == $postId) {
+                $selectedPost = $post;
+            }
+        }
 
         return view('posts.edit', [
             'post' => $selectedPost
