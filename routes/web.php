@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('welcome');
 });
+
+// All posts
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+// Create new post
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+// Store post
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+// View post
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+// Update post
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+
+// Delete post
+// Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
