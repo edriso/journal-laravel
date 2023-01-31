@@ -23,6 +23,6 @@
     </select>
   </div>
   
-  <button type="submit" class="btn btn-success px-4 py-2">Post</button>
+  <x-button label="Post" />
 </form>
 @endsection

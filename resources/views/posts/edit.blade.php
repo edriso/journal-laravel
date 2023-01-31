@@ -5,9 +5,10 @@
 @endsection
 
 @section('content')
-{{-- @dd($post) --}}
-<form action="/posts" method="POST">
+
+<form action="/posts/{{$post['id']}}" method="POST">
 @csrf
+@method('PUT')
   <div class="form-group mb-3">
     <label for="post-title">Title</label>
     <input type="text" value="{{$post['title']}}" class="form-control" id="post-title" placeholder="Post Title">
@@ -24,6 +25,6 @@
     </select>
   </div>
   
-  <button type="submit" class="btn btn-success px-4 py-2">Edit</button>
+  <x-button label="Edit" type="submit" />
 </form>
 @endsection

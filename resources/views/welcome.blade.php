@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <p>Welcome on my home page!</p>
+    <p>Welcome to home page!</p>
 @endsection

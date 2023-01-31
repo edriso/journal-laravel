@@ -38,7 +38,7 @@ class PostController extends Controller
     }
 
     public function store() {
-        return view('posts.store');
+        return redirect()->route('posts.index');
     }
 
     public function show($postId) {
@@ -109,5 +109,9 @@ class PostController extends Controller
         return view('posts.edit', [
             'post' => $selectedPost
         ]);
+    }
+
+    public function update($postId) {
+        return redirect()->route('posts.index');
     }
 }

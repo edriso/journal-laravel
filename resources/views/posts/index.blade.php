@@ -45,7 +45,7 @@
 
 <div class="position-absolute bottom-0 end-0 pb-3 px-3">
     <a href="{{route('posts.create')}}">
-        <button class="btn btn-success">Create Post</button>
+      <x-button label="New Post" />
     </a>
 </div>
 @endsection
