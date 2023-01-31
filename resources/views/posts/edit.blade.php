@@ -25,6 +25,6 @@
     </select>
   </div>
   
-  <x-button label="Edit" type="submit" />
+  <x-button type="submit" >Edit</x-button>
 </form>
 @endsection

@@ -6,8 +6,8 @@ use Illuminate\View\Component;
 
 class Button extends Component
 {
-    public $label;
     public $color;
+    public $class;
     public $type;
     
     /**
@@ -15,10 +15,10 @@ class Button extends Component
      *
      * @return void
      */
-    public function __construct($label, $color = 'success', $type = 'button')
+    public function __construct($color = 'success', $class = 'btn-md', $type = 'button')
     {
-        $this->label = $label;
         $this->color = $color;
+        $this->class = $class;
         $this->type = $type;
     }
 

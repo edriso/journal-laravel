@@ -23,6 +23,6 @@
     </select>
   </div>
   
-  <x-button label="Post" />
+  <x-button>Post</x-button>
 </form>
 @endsection

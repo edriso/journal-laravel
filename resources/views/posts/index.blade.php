@@ -23,10 +23,16 @@
         <td>{{$post['posted_by']}}</td>
         <td>{{$post['created_at']}}</td>
         <td>
-            {{-- <a href="/posts/2">View</a> --}}
-            <a href="{{route('posts.show', $post['id'])}}">View</a>
-            <a href="{{route('posts.edit', $post['id'])}}">Edit</a>
-            <a href="#">Delete</a>
+          <x-button class="btn-sm p-0" color="light" >
+              {{-- <a href="/posts/2">View</a> --}}
+              <a href="{{route('posts.show', $post['id'])}}" class="p-2 d-inline-block text-decoration-none">View</a>
+            </x-button>
+            <x-button class="btn-sm p-0" color="light" >
+              <a href="{{route('posts.edit', $post['id'])}}" class="p-2 d-inline-block text-decoration-none">Edit</a>
+            </x-button>
+            <x-button class="btn-sm p-0" color="light" >
+              <a href="#" class="text-danger p-2 d-inline-block text-decoration-none">Delete</a>
+            </x-button>
         </td>
     </tr>
     @endforeach
@@ -45,7 +51,7 @@
 
 <div class="position-absolute bottom-0 end-0 pb-3 px-3">
     <a href="{{route('posts.create')}}">
-      <x-button label="New Post" />
+      <x-button>New Post</x-button>
     </a>
 </div>
 @endsection
