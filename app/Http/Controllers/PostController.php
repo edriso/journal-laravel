@@ -114,4 +114,9 @@ class PostController extends Controller
     public function update($postId) {
         return redirect()->route('posts.index');
     }
+
+    public function destroy($postId) {
+        return "deleted";
+        // return redirect()->route('posts.index');
+    }
 }
