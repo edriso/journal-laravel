@@ -19,9 +19,12 @@
   </div>
   <div class="form-group mb-4">
     <label for="post-author">Author</label>
-    <select name="author" class="form-control" id="post-author">
-      <option>John Doe</option>
-      <option>Jane Doe</option>
+    <select name="author_id" class="form-control" id="post-author">
+      @foreach ($users as $user)
+      <option value="{{$user->id}}" {{$post->user_id === $user->id ? 'selected' : ''}}>
+        {{$user->name}}
+      </option>
+      @endforeach
     </select>
   </div>
   

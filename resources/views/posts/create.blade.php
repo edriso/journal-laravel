@@ -17,9 +17,12 @@
   </div>
   <div class="form-group mb-4">
     <label for="post-author">Author</label>
-    <select name="author" class="form-control" id="post-author">
-      <option value="john doe">John Doe</option>
-      <option value="jane doe">Jane Doe</option>
+    <select name="author_id" class="form-control" id="post-author">
+      @foreach ($users as $user)
+      <option value="{{$user->id}}">
+        {{$user->name}}
+      </option>
+      @endforeach
     </select>
   </div>
   

@@ -21,7 +21,7 @@
       {{-- <th scope="row">{{$post['id']}}</th> --}}
         <th scope="row">{{$post->id}}</th>
         <td>{{$post->title}}</td>
-        <td>{{$post->posted_by}}</td>
+        <td>{{$post->user?->name}}</td>
         <td>{{$post->created_at}}</td>
         <td>
           <x-button class="btn-sm p-0" color="light" >
