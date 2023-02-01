@@ -9,20 +9,20 @@
   @csrf
   <div class="form-group mb-3">
     <label for="post-title">Title</label>
-    <input type="text" class="form-control" id="post-title" placeholder="Post Title">
+    <input type="text" name="title" class="form-control" id="post-title" placeholder="Post Title...">
   </div>
   <div class="form-group mb-3">
     <label for="post-content">Content</label>
-    <textarea class="form-control" id="post-content" rows="3"></textarea>
+    <textarea class="form-control" name="content" id="post-content" rows="3" placeholder="Post Content..."></textarea>
   </div>
   <div class="form-group mb-4">
     <label for="post-author">Author</label>
-    <select class="form-control" id="post-author">
-      <option>John Doe</option>
-      <option>Jane Doe</option>
+    <select name="author" class="form-control" id="post-author">
+      <option value="john doe">John Doe</option>
+      <option value="jane doe">Jane Doe</option>
     </select>
   </div>
   
-  <x-button>Post</x-button>
+  <x-button type="submit">Post</x-button>
 </form>
 @endsection

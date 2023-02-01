@@ -18,21 +18,21 @@
   <tbody>
     @foreach ($posts as $post)
     <tr class="align-middle">
-        <th scope="row">{{$post['id']}}</th>
-        <td>{{$post['title']}}</td>
-        <td>{{$post['posted_by']}}</td>
-        <td>{{$post['created_at']}}</td>
+      {{-- <th scope="row">{{$post['id']}}</th> --}}
+        <th scope="row">{{$post->id}}</th>
+        <td>{{$post->title}}</td>
+        <td>{{$post->posted_by}}</td>
+        <td>{{$post->created_at}}</td>
         <td>
           <x-button class="btn-sm p-0" color="light" >
               {{-- <a href="/posts/2">View</a> --}}
-              <a href="{{route('posts.show', $post['id'])}}" class="px-3 py-1 d-inline-block text-decoration-none">View</a>
+              <a href="{{route('posts.show', $post->id)}}" class="px-3 py-1 d-inline-block text-decoration-none">View</a>
             </x-button>
             <x-button class="btn-sm p-0" color="light" >
-              <a href="{{route('posts.edit', $post['id'])}}" class="px-3 py-1 d-inline-block text-decoration-none">Edit</a>
+              <a href="{{route('posts.edit', $post->id)}}" class="px-3 py-1 d-inline-block text-decoration-none">Edit</a>
             </x-button>
             <x-button class="btn-sm p-0" color="light" >
-              {{-- <a href="#" class="text-danger px-3 py-1 d-inline-block text-decoration-none">Delete</a> --}}
-              <span class="text-danger px-3 py-1 d-inline-block" data-bs-toggle="modal" data-bs-target="#delete-post-modal" data-bs-post-id="{{$post['id']}}">Delete</span>
+              <span class="text-danger px-3 py-1 d-inline-block" data-bs-toggle="modal" data-bs-target="#delete-post-modal" data-bs-post-id="{{$post->id}}">Delete</span>
             </x-button>
         </td>
     </tr>

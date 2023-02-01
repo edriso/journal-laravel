@@ -7,14 +7,14 @@
 @section('content')
 <div class="card text-center">
   <div class="card-header">
-    {{'@'.$post['posted_by']}}
+    {{'@'.$post->posted_by}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{$post['title']}}</h5>
-    <p class="card-text">{{$post['content']}}</p>
+    <h5 class="card-title h3">{{$post->title}}</h5>
+    <p class="card-text" style="white-space: pre-wrap;">{{$post->content}}</p>
   </div>
   <div class="card-footer text-muted">
-    {{$post['created_at']}}
+    {{$post->created_at}}
   </div>
 </div>
 @endsection
