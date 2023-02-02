@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
 
@@ -24,7 +25,13 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(PostRequest $request) {
+        // $request -> validate([
+        //     'title' => ['required', 'min:3'],
+        // ], [
+        //     'title.required' => 'Post must have a title!',
+        // ]);
+
         // $title = request()->title;
         $formData = $request->all();
         $title = $formData['title'];
@@ -68,8 +75,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function update($postId, Request $request) {
-         $selectedPost = Post::find($postId);
+    public function update($postId, PostRequest $request) {
+        $selectedPost = Post::find($postId);
 
         if(!$selectedPost) {
             return to_route(route: 'posts.index');
