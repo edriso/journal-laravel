@@ -25,6 +25,10 @@
     <label for="post-content">Content</label>
     <textarea class="form-control" name="content" id="post-content" rows="3" placeholder="Post Content..."></textarea>
   </div>
+  <div class="form-group mb-3">
+    <label for="post-image" class="form-label">Image</label>
+    <input class="form-control form-control-sm" name="image" id="post-image" type="file" accept="image/png, image/gif, image/jpeg" />
+  </div>
   <div class="form-group mb-4">
     <label for="post-author">Author</label>
     <select name="author_id" class="form-control" id="post-author">
