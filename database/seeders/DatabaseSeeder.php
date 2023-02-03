@@ -12,8 +12,10 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+    // php artisan db:seed
     public function run()
     {
+        \App\Models\Post::factory(10)->create();
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
