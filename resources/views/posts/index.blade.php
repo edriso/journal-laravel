@@ -12,7 +12,7 @@
       <th scope="col">Title</th>
       <th scope="col">Posted By</th>
       <th scope="col">Created At</th>
-      <th scope="col">Actions</th>
+      <th scope="col" class="{{!$isAuth ? 'd-none' : ''}}">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
         <td>{{$post->title}}</td>
         <td>{{$post->user?->name}}</td>
         <td>{{$post->created_at->diffForHumans(['aUnit' => true])}}</td>
-        <td>
+        <td class="{{!$isAuth ? 'd-none' : ''}}">
           <x-button class="btn-sm p-0" color="light" >
               {{-- <a href="/posts/2">View</a> --}}
               <a href="{{route('posts.show', $post->id)}}" class="px-3 py-1 d-inline-block text-decoration-none">View</a>

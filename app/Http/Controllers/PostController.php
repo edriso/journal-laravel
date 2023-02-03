@@ -17,9 +17,10 @@ class PostController extends Controller
         // $posts = Post::all();
         // $posts = Post::paginate(5);
         $posts = Post::orderBy('id', 'desc')->paginate(10);
-
+        
         return view('posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'isAuth' => Auth::check()
         ]);
     }
 
