@@ -22,7 +22,7 @@
         <th scope="row">{{$post->id}}</th>
         <td>{{$post->title}}</td>
         <td>{{$post->user?->name}}</td>
-        <td>{{$post->created_at}}</td>
+        <td>{{$post->created_at->diffForHumans(['aUnit' => true])}}</td>
         <td>
           <x-button class="btn-sm p-0" color="light" >
               {{-- <a href="/posts/2">View</a> --}}
