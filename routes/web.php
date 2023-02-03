@@ -22,23 +22,27 @@ Route::get('/', function() {
 // All posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
-// Create new post
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-
-// Store post
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-
 // View post
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+// Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')->middleware(middleware: 'auth');
 
-// Edit post
-Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::group(['middleware' => ['auth']], function() {
+    // Create new post
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    
+    // Store post
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    
+    // Edit post
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    
+    // Update post
+    Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+    
+    // Delete post
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+});
 
-// Update post
-Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-
-// Delete post
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
