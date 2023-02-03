@@ -28,7 +28,7 @@ class PostRequest extends FormRequest
             'content' => ['required', 'min:10'],
             'author_id' => [
                 'exists:App\Models\User,id'
-                // 'exists:Users,id'
+                // 'exists:users,id'
             ],
         ];
     }

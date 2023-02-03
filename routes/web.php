@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 
 /*
@@ -38,6 +39,6 @@ Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.upda
 
 // Delete post
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
