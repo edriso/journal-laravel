@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form action="/posts" method="POST">
+<form action="{{ route('posts.store') }}" method="POST">
   @csrf
   <div class="form-group mb-3">
     <label for="post-title">Title</label>
