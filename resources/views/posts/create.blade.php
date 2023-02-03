@@ -29,7 +29,9 @@
     <label for="post-author">Author</label>
     <select name="author_id" class="form-control" id="post-author">
       @foreach ($users as $user)
-      <option value="{{$user->id}}">
+      <option
+      value="{{$user->id}}"
+      {{$user->id === $authId ? 'selected' : ''}}>
         {{$user->name}}
       </option>
       @endforeach

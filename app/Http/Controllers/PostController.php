@@ -8,6 +8,9 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class PostController extends Controller
 {
     public function index() {
@@ -22,7 +25,8 @@ class PostController extends Controller
         $users = User::all();
 
         return view('posts.create', [
-            'users' => $users
+            'users' => $users,
+            'authId' => Auth::user()->id
         ]);
     }
 
