@@ -34,7 +34,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-primary" href="{{ url('/') }}">
+                <a class="navbar-brand text-danger" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <a class="nav-link" href="{{route('posts.index')}}"><small>All Posts</small></a>

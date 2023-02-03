@@ -37,6 +37,6 @@
     </select>
   </div>
   
-  <x-button type="submit" >Edit</x-button>
+  <x-button type="submit" color="success">Update</x-button>
 </form>
 @endsection
