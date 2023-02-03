@@ -20,7 +20,7 @@ class PostFactory extends Factory
 
         return [
             'title' => $faker->text(35),
-            'content' => $faker->realTextBetween(10, 100),
+            'content' => $faker->realTextBetween(50, 300),
             'user_id' => $faker->numberBetween(1, 4),
         ];
     }
