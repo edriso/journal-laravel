@@ -21,10 +21,7 @@ Route::get('/', function() {
 
 // All posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-
-// View post
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-// Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')->middleware(middleware: 'auth');
+// Route::get('/posts', [PostController::class, 'index'])->name('posts.index')->middleware(middleware: 'auth');
 
 Route::group(['middleware' => ['auth']], function() {
     // Create new post
@@ -43,6 +40,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
+// View post
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

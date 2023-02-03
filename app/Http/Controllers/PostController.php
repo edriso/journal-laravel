@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -26,11 +27,11 @@ class PostController extends Controller
     }
 
     public function store(PostRequest $request) {
-        // $request -> validate([
-        //     'title' => ['required', 'min:3'],
-        // ], [
-        //     'title.required' => 'Post must have a title!',
-        // ]);
+        $request -> validate([
+            'title' => ['unique:posts'],
+        ], [
+            'title.unique' => 'Title already exists!',
+        ]);
 
         // $title = request()->title;
         $formData = $request->all();
@@ -77,6 +78,10 @@ class PostController extends Controller
 
     public function update($postId, PostRequest $request) {
         $selectedPost = Post::find($postId);
+        
+        $request -> validate([
+            'title' => [Rule::unique('posts')->ignore($selectedPost->id)]
+        ]);
 
         if(!$selectedPost) {
             return to_route(route: 'posts.index');
