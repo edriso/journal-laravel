@@ -17,6 +17,6 @@ class PostSeeder extends Seeder
     // php artisan db:seed --class=PostSeeder
     public function run()
     {
-        Post::factory(5)->create();
+        Post::factory()->count(5)->create();
     }
 }
