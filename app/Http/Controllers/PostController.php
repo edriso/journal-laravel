@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index() {
-        $allPosts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::paginate(5);
 
         return view('posts.index', [
-            'posts' => $allPosts
+            'posts' => $posts
         ]);
     }
 
