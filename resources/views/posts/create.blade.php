@@ -38,6 +38,6 @@
     </select>
   </div>
   
-  <x-button type="submit">Post</x-button>
+  <x-button type="submit" color="success">Post</x-button>
 </form>
 @endsection
