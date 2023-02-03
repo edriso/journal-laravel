@@ -7,11 +7,22 @@
 @section('content')
 <section class="card text-center">
   <div class="card-header small text-muted">
-      On:
-      <span>
-        {{$post->created_at->isoFormat('ddd, D MMMM Y')}}
-      </span>
+    On:
+    <span>
+      {{$post->created_at->isoFormat('ddd, D MMMM Y')}}
+    </span>
   </div>
+  
+  @if ($post->image)
+  <img
+  {{-- src="https://images.unsplash.com/photo-1540337706094-da10342c93d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" --}}
+  src="{{$post->image}}"
+  class="object-fit-cover"
+  alt="post image"
+  style="height: 30rem;"
+  />
+  @endif
+  
   <div class="card-body">
     <h5 class="card-title h3">{{$post->title}}</h5>
     <p class="card-text" style="white-space: pre-wrap;">{{$post->content}}</p>
@@ -22,6 +33,7 @@
   </div>
 </section>
 
+{{-- Comments --}}
 <section class="card mt-5">
   <div class="card-body p-4">
     <form action="{{route('comments.store')}}" method="POST" class="form-outline mb-4 d-flex gap-2">
