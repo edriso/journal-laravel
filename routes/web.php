@@ -30,6 +30,9 @@ Route::group(['middleware' => ['auth']], function() {
     // Store post
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     
+    // View post
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    
     // Edit post
     Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
     
@@ -39,9 +42,6 @@ Route::group(['middleware' => ['auth']], function() {
     // Delete post
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
-
-// View post
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

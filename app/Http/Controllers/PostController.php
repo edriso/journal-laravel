@@ -4,18 +4,16 @@ namespace App\Http\Controllers;
 
 // use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Validation\Rule;
-
-use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
 
 
 class PostController extends Controller
 {
     public function index() {
-        // $posts = Post::all();
-        // $posts = Post::paginate(7);
         $posts = Post::latest()->paginate(7);
         
         return view('posts.index', [
@@ -63,8 +61,11 @@ class PostController extends Controller
             return redirect()->route('posts.index');
         }
 
+        $comments = Comment::where('post_id', $postId)->get();
+
         return view('posts.show', [
-            'post' => $selectedPost
+            'post' => $selectedPost,
+            'comments' => $comments
         ]);
     }
 
