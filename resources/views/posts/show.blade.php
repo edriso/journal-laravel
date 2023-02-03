@@ -8,8 +8,10 @@
 <div class="card text-center">
   <div class="card-header">
     <small class="text-muted">On: </small>
-    {{-- {{$post->created_at->format('jS F y \a\t H:i')}} --}}
-    {{$post->created_at->isoFormat('dddd, D MMM Y')}}
+    <span class="text-success">
+      {{-- {{$post->created_at->format('jS F y \a\t H:i')}} --}}
+      {{$post->created_at->isoFormat('ddd, D MMMM Y')}}
+    </span>
   </div>
   <div class="card-body">
     <h5 class="card-title h3">{{$post->title}}</h5>
@@ -17,7 +19,7 @@
   </div>
   <div class="card-footer">
     <small class="text-muted">by: </small>
-    <span class="text-danger">{{$post->user?->name}}</span>
+    <span class="text-success">{{$post->user?->name}}</span>
   </div>
 </div>
 @endsection

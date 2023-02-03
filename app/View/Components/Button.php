@@ -15,7 +15,7 @@ class Button extends Component
      *
      * @return void
      */
-    public function __construct($color = 'success', $class = 'btn-md', $type = 'button')
+    public function __construct($color = 'primary', $class = 'btn-md', $type = 'button')
     {
         $this->color = $color;
         $this->class = $class;
