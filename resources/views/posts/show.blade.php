@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Post Details
+    {{$post->title}}
 @endsection
 
 @section('content')
