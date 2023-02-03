@@ -42,9 +42,9 @@
 
 {{$posts->links()}}
 
-<div class="position-absolute bottom-0 end-0 pb-3 px-3">
+<div class="position-absolute bottom-0 end-0 pb-5 px-5">
     <a href="{{route('posts.create')}}">
-      <x-button>New Post</x-button>
+      <x-button class="rounded-circle p-3" color="outline-success">New Post</x-button>
     </a>
 </div>
 
