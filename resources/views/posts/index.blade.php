@@ -70,7 +70,9 @@
     </div>
   </div>
 </div>
+@endsection
 
+@section('script')
 <script>
   // Dynamically change delete form action
   const deleteModal = document.getElementById('delete-post-modal')
@@ -85,5 +87,5 @@
   const modalForm = deleteModal.querySelector('form')
   modalForm.setAttribute('action', `/posts/${postId}`);
 })
-</script>
+</script>   
 @endsection
