@@ -33,7 +33,7 @@
     <div class="form-check">
       <input class="form-check-input" type="checkbox" name="delete_image" id="delete-image-check">
       <label class="form-check-label" for="delete-image-check">
-        Delete image
+        Remove Image
       </label>
     </div>
     <img src="{{asset($post->image_path)}}" class="img-thumbnail d-block mb-2" width="100" height="100" alt="post image" />

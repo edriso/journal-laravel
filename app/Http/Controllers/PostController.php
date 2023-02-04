@@ -104,14 +104,14 @@ class PostController extends Controller
             return to_route(route: 'posts.index');
         }
 
-        if(isset($request->delete_image)) {
-            Storage::delete($selectedPost->image_path);
-            $image_path = '';
-            $selectedPost->image_path = $image_path;
-        } elseif($request->hasFile('image')) {
+        if($request->hasFile('image')) {
             Storage::delete($selectedPost->image_path);
             $postImage = $request->file('image');
             $image_path = $postImage->store('images');
+            $selectedPost->image_path = $image_path;
+        }elseif(isset($request->delete_image)) {
+            Storage::delete($selectedPost->image_path);
+            $image_path = '';
             $selectedPost->image_path = $image_path;
         }
 
