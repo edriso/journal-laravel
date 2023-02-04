@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form action="{{ route('posts.store') }}" method="POST">
+<form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
   @csrf
   <div class="form-group mb-3">
     <label for="post-title">Title</label>
@@ -27,7 +27,8 @@
   </div>
   <div class="form-group mb-3">
     <label for="post-image" class="form-label">Image</label>
-    <input class="form-control form-control-sm" name="image" id="post-image" type="file" accept="image/png, image/gif, image/jpeg" />
+    <input class="form-control form-control-sm" name="image" id="post-image" type="file" />
+    {{-- <input class="form-control form-control-sm" name="image" id="post-image" type="file" accept="image/png, image/gif, image/jpeg" /> --}}
   </div>
   <div class="form-group mb-4">
     <label for="post-author">Author</label>

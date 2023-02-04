@@ -17,7 +17,8 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::get('/', function() {
-    return view('welcome');
+    // return view('welcome');
+    return redirect()->to('./posts');
 });
 
 // All posts
@@ -49,4 +50,7 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function() {
+    return redirect()->to('./posts');
+});
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

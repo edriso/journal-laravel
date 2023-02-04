@@ -13,10 +13,13 @@
     </span>
   </div>
   
-  @if ($post->image)
+  @if ($post->image_path)
   <img
   {{-- src="https://images.unsplash.com/photo-1540337706094-da10342c93d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" --}}
-  src="{{$post->image}}"
+  src="{{url($post->image_path)}}"
+  {{-- src="{{url('storage/app/'.$post->image_path)}}" --}}
+  {{-- src="{{Storage::disk('local')->url('app/'.$post->image_path)}}" --}}
+  {{-- src="{{asset('storage/app/'.$post->image_path)}}" --}}
   class="object-fit-cover"
   alt="post image"
   style="height: 30rem;"

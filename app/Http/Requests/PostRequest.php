@@ -30,6 +30,7 @@ class PostRequest extends FormRequest
                 'exists:App\Models\User,id'
                 // 'exists:users,id'
             ],
+            'image' => 'mimes:jpg,bmp,png'
         ];
     }
 

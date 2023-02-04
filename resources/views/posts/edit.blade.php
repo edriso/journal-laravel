@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form action="{{route('posts.update', $post->id)}}" method="POST">
+<form action="{{route('posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
 @csrf
 @method('PUT')
   <div class="form-group mb-3">
