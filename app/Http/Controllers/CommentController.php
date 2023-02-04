@@ -9,22 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function store(Request $request) {
+        // always make a request to validate
         $request -> validate([
             'text' => ['required'],
             'postId' => ['required', 'exists:posts,id'],
         ]);
 
-        $text = $request->text;
-        $postId = $request->postId;
-        $userId = Auth::user()->id;
-
         Comment::create([
-            'text' => $text,
-            'post_id' => $postId,
-            'user_id' => $userId,
+            'text' => $request->text,
+            'post_id' => $request->postId,
+            'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->route('posts.show', $postId);
+        return redirect()->route('posts.show', $request->postId);
     }
 
     public function destroy($commentId) {
@@ -35,7 +32,7 @@ class CommentController extends Controller
         }
         
         $postId = $selectedComment->post_id;
-        $selectedComment->forceDelete();
+        $selectedComment->delete();
 
         return redirect()->route('posts.show', $postId);
     }

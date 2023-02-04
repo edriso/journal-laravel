@@ -130,17 +130,12 @@ class PostController extends Controller
         if(!$selectedPost) {
             return to_route(route: 'posts.index');
         }
+        
+        // delete post comments before deleting the post
+
         Storage::delete($selectedPost->image_path);
-        $selectedPost->forceDelete();
+        $selectedPost->delete();
 
         return redirect()->route('posts.index');
     }
-
-    // private function storeImage($request)
-    // {
-    //     @dd($request->image);
-    //     $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-        
-    //     return $request->image->move(public_path('image', $newImageName));
-    // }
 }

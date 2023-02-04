@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     
     // PostComments Routes
+    // posts/{post}/comments/{comment}
     Route::post('/comments}', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });

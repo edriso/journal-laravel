@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostRequest extends FormRequest
 {
@@ -24,6 +25,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'title' => ['required', 'min:3',Rule::unique('posts', 'title')->ignore($this->post)],
             'title' => ['required', 'min:3'],
             'content' => ['required', 'min:10'],
             'author_id' => [
