@@ -131,7 +131,8 @@ class PostController extends Controller
             return to_route(route: 'posts.index');
         }
         
-        // delete post comments before deleting the post
+        $postComments = Comment::where('post_id', $postId)->get();
+        $postComments->each->delete();
 
         Storage::delete($selectedPost->image_path);
         $selectedPost->delete();
