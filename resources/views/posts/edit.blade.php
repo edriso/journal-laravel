@@ -26,10 +26,26 @@
     <label for="post-content">Content</label>
     <textarea class="form-control" name="content" id="post-content" rows="3" placeholder="Post Content...">{{$post->content}}</textarea>
   </div>
+  
+  {{-- @dd($post->image_path) --}}
   <div class="form-group mb-3">
+    @if ($post->image_path)
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="delete_image" id="delete-image-check">
+      <label class="form-check-label" for="delete-image-check">
+        Delete image
+      </label>
+    </div>
+    <img src="{{asset($post->image_path)}}" class="img-thumbnail d-block mb-2" width="100" height="100" alt="post image" />
+
+    <label for="post-image" class="form-label">Replace Image</label>
+    @else
     <label for="post-image" class="form-label">Image</label>
-    <input class="form-control form-control-sm" name="image" id="post-image" type="file" accept="image/png, image/gif, image/jpeg" />
+    @endif
+      
+    <input class="form-control form-control-sm" name="image" id="post-image" type="file" />
   </div>
+
   <div class="form-group mb-4">
     <label for="post-author">Author</label>
     <select name="author_id" class="form-control" id="post-author">

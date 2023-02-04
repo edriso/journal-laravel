@@ -10,7 +10,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
 
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -104,16 +104,20 @@ class PostController extends Controller
             return to_route(route: 'posts.index');
         }
 
-        // $image_path = null;
-        // if($request->hasFile('image')) {
-        //     $postImage = $request->file('image');
-        //     $image_path = $postImage->store('posts');
-        // }
+        if(isset($request->delete_image)) {
+            Storage::delete($selectedPost->image_path);
+            $image_path = '';
+            $selectedPost->image_path = $image_path;
+        } elseif($request->hasFile('image')) {
+            Storage::delete($selectedPost->image_path);
+            $postImage = $request->file('image');
+            $image_path = $postImage->store('images');
+            $selectedPost->image_path = $image_path;
+        }
 
         $selectedPost->title = $request->title;
         $selectedPost->content = $request->content;
         $selectedPost->user_id = $request->author_id;
-        // $selectedPost->image_path = $image_path;
 
         $selectedPost->save();
 
@@ -126,7 +130,7 @@ class PostController extends Controller
         if(!$selectedPost) {
             return to_route(route: 'posts.index');
         }
-
+        Storage::delete($selectedPost->image_path);
         $selectedPost->forceDelete();
 
         return redirect()->route('posts.index');
