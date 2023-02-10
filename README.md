@@ -10,3 +10,7 @@ Building a full stack web app using Laravel
 -   Comments on posts
 -   Validation
 -   Pagination
+
+### Snapshot
+
+![Journal-homepage](./snapshot.png)
