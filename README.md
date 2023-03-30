@@ -1,6 +1,6 @@
 # Journal-Laravel
 
-Building a full stack web app using Laravel
+Building a full stack blog using Laravel
 
 ### App Features
 
@@ -13,4 +13,4 @@ Building a full stack web app using Laravel
 
 ### Snapshot
 
-![Journal-homepage](./snapshot.png)
+![homepage](./snapshot.png)
