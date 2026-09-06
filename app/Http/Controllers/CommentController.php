@@ -25,7 +25,8 @@ class CommentController extends Controller
     }
 
     public function destroy($commentId) {
-        $selectedComment = Comment::find($commentId);
+        $selectedComment = Comment::findOrFail($commentId);
+        abort_unless($selectedComment->user_id === Auth::id(), 403);
         
         if(!$selectedComment) {
             return to_route(route: 'posts.index');

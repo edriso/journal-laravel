@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function index() {
         $posts = Post::latest()->paginate(7);
-        
+
         return view('posts.index', [
             'posts' => $posts,
             'isAuth' => Auth::check()
@@ -43,8 +43,8 @@ class PostController extends Controller
         $formData = $request->all();
         $title = $formData['title'];
         $content = $formData['content'];
-        $userId = $formData['author_id'];
-        
+        $userId = $request->user()->id;
+
         $image_path = null;
         if($request->hasFile('image')) {
             // $image_path = Storage::putFile('images', $request->file('image'));
@@ -79,7 +79,8 @@ class PostController extends Controller
     }
 
     public function edit($postId) {
-        $selectedPost = Post::find($postId);
+        $selectedPost = Post::findOrFail($postId);
+        abort_unless($selectedPost->user_id === Auth::id(), 403);
 
         if(!$selectedPost) {
             return to_route(route: 'posts.index');
@@ -94,8 +95,9 @@ class PostController extends Controller
     }
 
     public function update($postId, PostRequest $request) {
-        $selectedPost = Post::find($postId);
-        
+        $selectedPost = Post::findOrFail($postId);
+        abort_unless($selectedPost->user_id === Auth::id(), 403);
+
         $request -> validate([
             'title' => [Rule::unique('posts')->ignore($selectedPost->id)]
         ]);
@@ -105,19 +107,19 @@ class PostController extends Controller
         }
 
         if($request->hasFile('image')) {
-            Storage::delete($selectedPost->image_path);
+            if ($selectedPost->image_path) { Storage::delete($selectedPost->image_path); }
             $postImage = $request->file('image');
             $image_path = $postImage->store('images');
             $selectedPost->image_path = $image_path;
         }elseif(isset($request->delete_image)) {
-            Storage::delete($selectedPost->image_path);
+            if ($selectedPost->image_path) { Storage::delete($selectedPost->image_path); }
             $image_path = '';
             $selectedPost->image_path = $image_path;
         }
 
         $selectedPost->title = $request->title;
         $selectedPost->content = $request->content;
-        $selectedPost->user_id = $request->author_id;
+
 
         $selectedPost->save();
 
@@ -125,16 +127,17 @@ class PostController extends Controller
     }
 
     public function destroy($postId) {
-        $selectedPost = Post::find($postId);
+        $selectedPost = Post::findOrFail($postId);
+        abort_unless($selectedPost->user_id === Auth::id(), 403);
 
         if(!$selectedPost) {
             return to_route(route: 'posts.index');
         }
-        
+
         $postComments = Comment::where('post_id', $postId)->get();
         $postComments->each->delete();
 
-        Storage::delete($selectedPost->image_path);
+        if ($selectedPost->image_path) { Storage::delete($selectedPost->image_path); }
         $selectedPost->delete();
 
         return redirect()->route('posts.index');

@@ -18,7 +18,7 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', function() {
     // return view('welcome');
-    return redirect()->to('./posts');
+    return redirect()->route('posts.index');
 });
 
 // All posts
@@ -46,12 +46,12 @@ Route::group(['middleware' => ['auth']], function() {
     
     // PostComments Routes
     // posts/{post}/comments/{comment}
-    Route::post('/comments}', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });
 
 Auth::routes();
 Route::get('/home', function() {
-    return redirect()->to('./posts');
+    return redirect()->route('posts.index');
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
